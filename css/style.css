@@ -270,8 +270,24 @@ h6 {
 
 .header {
   display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-height: 3.125rem;
+  height: 3.125rem;
+  z-index: 10;
+}
+
+.header._header-scroll {
+  position: fixed;
+  top: -200px;
+  background-color: #fff;
+}
+
+.header._header-show {
+  -webkit-transition: top 0.3s ease 0s;
+  transition: top 0.3s ease 0s;
+  top: 0;
 }
 
 .header__body {
@@ -284,7 +300,12 @@ h6 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 1.125rem 3.125rem;
+  padding: 1.125rem 0.625rem;
+}
+
+._header-show .header__body {
+  background-color: #e6e5e5;
+  border-radius: 7px;
 }
 
 .header__left {
@@ -294,6 +315,9 @@ h6 {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .menu__item {
@@ -307,6 +331,7 @@ h6 {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  padding: 0.625rem 0rem;
 }
 
 .menu__link {
@@ -357,6 +382,10 @@ body._touch .menu__item._active .menu__sub-list {
       -ms-transform: translate(0px, 0px);
           transform: translate(0px, 0px);
   pointer-events: all;
+}
+
+._header-show .menu__sub-list {
+  background-color: #e6e5e5;
 }
 
 .actions {
@@ -626,6 +655,7 @@ body._touch .menu__item._active .menu__sub-list {
 
 .hero__body {
   position: relative;
+  margin-top: 3.125rem;
 }
 
 .hero__content {
@@ -1275,6 +1305,10 @@ body._touch .menu__item._active .menu__sub-list {
             flex: 0 1 50%;
   }
 
+  .header__body {
+    padding: 0.5625rem 0.625rem;
+  }
+
   .menu__list {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1358,6 +1392,10 @@ body._touch .menu__item._active .menu__sub-list {
 }
 
 @media (min-width: 61.99875em) {
+  .header__body {
+    padding: 0.5625rem 3.125rem;
+  }
+
   .footer__body {
     padding: 4.0625rem 2.625rem 9.375rem;
   }
@@ -1504,12 +1542,6 @@ body._touch .menu__item._active .menu__sub-list {
 
   .product-cards__slider {
     max-width: 100%;
-  }
-}
-
-@media (max-width: 1080px) {
-  .header__body {
-    padding: 1.125rem 0.625rem;
   }
 }
 
